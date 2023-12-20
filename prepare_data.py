@@ -10,8 +10,8 @@ from fastseg.image.colorize import colorize, blend
 PATH_TO_DATA = "./data/highway_dataset"
 path_to_rgb = f"{PATH_TO_DATA}/rgb/"
 path_to_vis = f"{PATH_TO_DATA}/vis/"
-path_to_seg = f"{PATH_TO_DATA}/seg/"
-# path_to_seg = f"/home/dkhursen/Documents/B3B33UROB/HW_03_segmentation/traffic-flow-segmentation/data/filtered_dataset/seg/"
+# path_to_seg = f"{PATH_TO_DATA}/seg/"
+path_to_seg = f"/home/dkhursen/Documents/B3B33UROB/HW_03_segmentation/traffic-flow-segmentation/data/filtered_dataset/seg/"
 
 
 name_list = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush', 'banner', 'blanket', 'bridge', 'cardboard', 'counter', 'curtain', 'door-stuff', 'floor-wood', 'flower', 'fruit', 'gravel', 'house', 'light', 'mirror-stuff', 'net', 'pillow', 'platform', 'playingfield', 'railroad', 'river', 'road', 'roof', 'sand', 'sea', 'shelf', 'snow', 'stairs', 'tent', 'towel', 'wall-brick', 'wall-stone', 'wall-tile', 'wall-wood', 'water-other', 'window-blind', 'window-other', 'tree-merged', 'fence-merged', 'ceiling-merged', 'sky-other-merged', 'cabinet-merged', 'table-merged', 'floor-other-merged', 'pavement-merged', 'mountain-merged', 'grass-merged', 'dirt-merged', 'paper-merged', 'food-other-merged', 'building-other-merged', 'rock-merged', 'wall-other-merged', 'rug-merged', 'unsegmented']
@@ -97,8 +97,10 @@ def visualize_img_and_blended_seg(img: Image, seg_np: np.array) -> None:
     # seg_np = output.argmax(dim=1)[0].detach().cpu().numpy()
 
     # just to changes the colors for visualization
-    # seg_np[seg_np == 2] = 10 ### delete this
+    # seg_np[seg_np == 2] = 6 ### delete this
     # seg_np[seg_np == 100] = 2 ### delete this
+    # seg_np[seg_np == 133] = 5 ### delete this
+    # seg_np[seg_np == 7] = 1 ### delete this
 
 
     # Function from fastseg to visualize images and output segmentation
@@ -207,8 +209,8 @@ def show_class_distribution(folder_path: str) -> None:
 
 
 if __name__ == "__main__":
-    # filename = "102600107"
-    # access_to_seg_data(filename)
+    filename = "102600107"
+    access_to_seg_data(filename)
 
     # process/iterate through folder (all files)
     # process_npy_files(path_to_seg)
@@ -218,9 +220,9 @@ if __name__ == "__main__":
     # show_class_distribution("/home/dkhursen/Documents/B3B33UROB/HW_03_segmentation/segmentation_for_traffic_flow_analysis/datasets/intercity_crossroad_from_drone_dataset/seg/")
 
     # filter dataset to my usecase
-    keep_classes = ["car", "road", "truck", "bus", "motorcycle", "person", 'unsegmented']
-    new_folder_path = "/home/dkhursen/Documents/B3B33UROB/HW_03_segmentation/traffic-flow-segmentation/data/filtered_dataset/seg/"
-    export_data_with_classes_to_use(path_to_seg, keep_classes, new_folder_path)
+    # keep_classes = ["bus", "truck", "road", "motorcycle", "person", 'unsegmented', "car"]
+    # new_folder_path = "/home/dkhursen/Documents/B3B33UROB/HW_03_segmentation/traffic-flow-segmentation/data/filtered_dataset/seg/"
+    # export_data_with_classes_to_use(path_to_seg, keep_classes, new_folder_path)
 
 # in higway dataset all the unique classes are:
 # ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'stop sign', 'bridge', 'house', 'light', 'railroad', 'road', 'wall-stone', 'water-other', 'tree-merged', 'fence-merged', 'sky-other-merged', 'pavement-merged', 'grass-merged', 'dirt-merged', 'building-other-merged', 'wall-other-merged', 'unsegmented']
