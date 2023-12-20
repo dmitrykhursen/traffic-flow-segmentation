@@ -1,0 +1,2 @@
+the dataset was taken from: https://www.kaggle.com/datasets/hasibullahaman/objectdetectiondatasetcar/data
+and then SEEM was applied to the dataset to segment the objects: https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once
